@@ -22,6 +22,7 @@ if($conn->connect_error)
  $results=$conn->query($sql);
 if($results->num_rows>0)
 {
+    //changes
     while($row=$results->fetch_assoc())
     {
         if($row["name"]==$user && $row["password"]==$pass)
