@@ -10,7 +10,13 @@ FOODIE
 </head>
 <body>
 <div class="container">
+<div class="row mt-1">
+<div class="col">
+<h1 class="text-center" style="color:#660033;" > Welcome to FOOD-e </h1>
+</div>
+</div>
 <div class="row p-1">
+
 
 
 <?php 
@@ -37,7 +43,7 @@ $conn=new mysqli($server,$username,$password,$db_name);
     <div class="card-body">
         <h5 class="card-title"><?=$row['Tables_in_restaurant'];?></h5>
         
-        <a class="btn btn-primary" href="hangla/choose_food_spec.php?table=<?=$row['Tables_in_restaurant'];?>">Continue..</a> 
+        <a class="btn btn-primary" href="hangla/choose_food_spec.php?table=<?=$row['Tables_in_restaurant'];?>">Continue</a> 
     </div>
     </div>
     </div>
@@ -45,7 +51,6 @@ $conn=new mysqli($server,$username,$password,$db_name);
 
         
      <?php
-          echo "<br>";
         }
     }
     

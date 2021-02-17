@@ -6,19 +6,30 @@ if($_SESSION["uname"]==null)
     header('Location:login.php');
 }
 else{
-    $table=$_GET['table'];
+$table=$_GET['table'];
 ?>
-
 <html>
 <head>
 <title>
 FOODIE
 </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 </head>
 <body>
-<body style="background-color:#b3d9ff;">
+<div class="container">
+<div class="row mt-1">
+<div class ="col">
+<h1 class="text-center"> <?php echo $table; ?></h1>
+</div>
+</div>
+
+<div class="row mt-1">
+
+
 <form action="hangla_bill.php" method="POST"> 
-<input type="hidden" name="table" value="<?=$table?>"">
+<input type="hidden" name="table" value="<?=$table?>">
 <?php
 
 $server="localhost";
@@ -36,47 +47,57 @@ if($conn->connect_error)
  $results=$conn->query($sql);
 if($results->num_rows>0)
 {
-    echo "&nbsp &nbsp &nbsp &nbsp ";
-    echo "Which Food You Want To Ordered?"  ;
-    echo "<br>";
-    echo "<br>";
+    
+    echo "<h5 class='text-center'>Which Food You Want To Ordered?</h5>";
+    
     while($row=$results->fetch_assoc())
     {
+
+
       
     echo " <input type =\"hidden\" name= \"food_price[]\"value=\"".$row['food_price']."\">";
-    
-    echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
-         
-    echo " <input type =\"checkbox\" name= \"food[]\"value=\"".$row['id']."\">";           
-    //echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
-
-        echo "   Food Name:  <label for =\"".$row['food_name']."\">".$row['food_name']."</label>";
-        echo "<br>";
-        echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
-
-        echo "   Food Price:  <label for =\"".$row['food_price']."\">".$row['food_price']."</label>";
-        echo "<br>";
-      echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
-
-
-        echo "How many want to buy?";
-        echo "<br>";
-        echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
-
-        echo " <input type =\"number\" name= \"".$row['id']."\"value=\"1\">";           
-        echo "<br>";
-        echo "<br>";
-    }
-    
-}
 
 ?>
+<div class="col-lg-3 col-md-4 col-sm-6 col-12 p-2">
+<?php
+echo " <input type =\"checkbox\" name= \"food[]\"value=\"".$row['id']."\">";        
+   ?>
+      <div class="card ml-2 mt-1" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <img src="nn.jpg" class="card-img-top img-fluid" alt="...">
+  <div class="card-body">
+  <p class="card-text" >
+  <?php
+          echo "<b>Food Name: </b>".$row['food_name'];
+          ?>
+          </p>
+          <p class="card-text" >
+          <?php
+        
+          echo "<b>Food Name: </b>".$row['food_price'];
+          ?>
+          </p>
+          <h5>How many want to buy?</h5>
+          <input type="number" class="form-control" name="<?php echo $row['id'];?>" value="1">
+  </div>
+</div>
+</div>
+<?php
+}
+    
+}
+?>
+
 <!-- How many want to buy?
 <input type="text" name="quant"/> -->
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-<input type="submit" name="submit" value="Buy Now">
+
+<input class="btn btn-dark" type="submit" name="submit" value="Buy Now">
 </form>
+</div>
+</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 </html>
 <?php
 }
