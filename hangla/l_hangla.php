@@ -15,7 +15,7 @@ FOODIE
 </title>
 </head>
 <body>
-<body style="background-color:#b3d9ff;">
+
 <form action="hangla_bill.php" method="POST"> 
 <input type="hidden" name="table" value="<?=$table?>">
 <?php
@@ -35,7 +35,7 @@ if($conn->connect_error)
  $results=$conn->query($sql);
 if($results->num_rows>0)
 {
-    echo "&nbsp &nbsp &nbsp &nbsp ";
+    
     echo "Which Food You Want To Ordered?"  ;
     echo "<br>";
     echo "<br>";
@@ -44,24 +44,23 @@ if($results->num_rows>0)
       
     echo " <input type =\"hidden\" name= \"food_price[]\"value=\"".$row['food_price']."\">";
     
-    echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
+    
          
     echo " <input type =\"checkbox\" name= \"food[]\"value=\"".$row['id']."\">";           
     //echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
 
         echo "   Food Name:  <label for =\"".$row['food_name']."\">".$row['food_name']."</label>";
         echo "<br>";
-        echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
+        
 
         echo "   Food Price:  <label for =\"".$row['food_price']."\">".$row['food_price']."</label>";
         echo "<br>";
-      echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
+      
 
 
         echo "How many want to buy?";
         echo "<br>";
-        echo "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ";
-
+        
         echo " <input type =\"number\" name= \"".$row['id']."\"value=\"1\">";           
         echo "<br>";
         echo "<br>";
@@ -72,7 +71,7 @@ if($results->num_rows>0)
 ?>
 <!-- How many want to buy?
 <input type="text" name="quant"/> -->
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
 <input type="submit" name="submit" value="Buy Now">
 </form>
 </body>

@@ -40,12 +40,6 @@ if(isset($_POST['submit']))
     
 
 ?>
-<script>
-    function delrestaurant(id){
-        alert(id);
-    }
-
-</script>
 <html>
 <head>
 <title>
